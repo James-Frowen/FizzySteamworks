@@ -24,12 +24,7 @@ jobs:
       # Installs nuget package from https://www.nuget.org/packages/unity-packer
       - name: Install unity-packer
         run: dotnet tool install -g unity-packer
-  
-
-      - uses: actions/upload-artifact@v4
-        with:
-          name: FizzySteamworks.unitypackage
-          path: FizzySteamworks.unitypackage
+ 
 
       - name: Release
         uses: cycjimmy/semantic-release-action@v4
