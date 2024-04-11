@@ -5,6 +5,9 @@ plugins:
   - - '@semantic-release/npm'
     - npmPublish: false
       pkgRoot: "com.mirror.steamworks.net"
+
+  - - '@semantic-release/exec'
+    - prepareCmd: "echo ${nextRelease.version} > com.mirror.steamworks.net/version.txt"
   
   - - '@semantic-release/exec'
     - prepareCmd: "unity-packer pack FizzySteamworks.unitypackage com.mirror.steamworks.net Assets/Mirror/Transports/FizzySteamworks" 
