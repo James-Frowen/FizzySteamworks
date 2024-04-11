@@ -33,6 +33,6 @@ jobs:
             @semantic-release/exec
             @semantic-release/changelog
             @semantic-release/git
-          branch: master
+          branch: ci
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
