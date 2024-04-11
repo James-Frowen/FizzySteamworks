@@ -5,7 +5,6 @@ using UnityEngine;
 
 namespace Mirror.FizzySteam
 {
-    
     [HelpURL("https://github.com/Chykary/FizzySteamworks")]
     public class FizzySteamworks : Transport
     {
