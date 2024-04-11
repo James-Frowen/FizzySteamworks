@@ -13,7 +13,7 @@ plugins:
     - assets:
         - 'com.mirror.steamworks.net/package.json'
 
-  - - path: "@semantic-release/github"
+  - - "@semantic-release/github"
     - assets:
         - path: "FizzySteamworks.unitypackage"
           label: "FizzySteamworks Unity Package"
