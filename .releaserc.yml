@@ -1,32 +1,38 @@
 plugins:
+  # check commit messages for changes
   - '@semantic-release/release-notes-generator'
   - '@semantic-release/commit-analyzer'
   
+  # update version inside package.json
   - - '@semantic-release/npm'
     - npmPublish: false
       pkgRoot: "com.mirror.steamworks.net"
 
-  - - '@semantic-release/exec'
-    - prepareCmd: "echo ${nextRelease.version} > com.mirror.steamworks.net/version.txt"
   
   # move package out so it is not in the .unitypackage
   - - '@semantic-release/exec'
     - prepareCmd: "mv com.mirror.steamworks.net/package.json package.json 
                 && mv com.mirror.steamworks.net/package.json.meta package.json.meta"
-    
+
+  # add version.txt
+  - - '@semantic-release/exec'
+    - prepareCmd: "echo ${nextRelease.version} > com.mirror.steamworks.net/version.txt"
+  # create .unitypackage
   - - '@semantic-release/exec'
     - prepareCmd: "unity-packer pack FizzySteamworks.unitypackage 
         com.mirror.steamworks.net Assets/Mirror/Transports/FizzySteamworks" 
   
+  # move package.json back
   - - '@semantic-release/exec'
     - prepareCmd: "mv package.json com.mirror.steamworks.net/package.json  
                 && mv package.json.meta com.mirror.steamworks.net/package.json.meta "
    
-
+  # commit package.json
   - - '@semantic-release/git'
     - assets:
         - 'com.mirror.steamworks.net/package.json'
-
+  
+  # create github release, and include unitypackage
   - - "@semantic-release/github"
     - assets:
         - path: "FizzySteamworks.unitypackage"
