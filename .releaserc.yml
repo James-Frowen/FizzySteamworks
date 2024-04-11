@@ -1,18 +1,20 @@
 plugins:
-  - "@semantic-release/commit-analyzer"
-  - "@semantic-release/release-notes-generator"
-  - "@semantic-release/npm"
-  - "@semantic-release/exec"
-  - "@semantic-release/git"
-  - "@semantic-release/github"
+  - '@semantic-release/release-notes-generator'
+  - '@semantic-release/commit-analyzer'
+  
+  - - '@semantic-release/npm'
+    - npmPublish: false
+      pkgRoot: "com.mirror.steamworks.net"
+  
+  - - '@semantic-release/exec'
+    - prepareCmd: "unity-packer pack FizzySteamworks.unitypackage com.mirror.steamworks.net Assets/Mirror/Transports/FizzySteamworks" 
+  
+  - - '@semantic-release/git'
+    - assets:
+        - 'com.mirror.steamworks.net/package.json'
 
-npmPublish: false
-pkgRoot: "com.mirror.steamworks.net"
-
-prepareCmd: "unity-packer pack FizzySteamworks.unitypackage com.mirror.steamworks.net Assets/Mirror/Transports/FizzySteamworks"
-
-assets:
-  - 'com.mirror.steamworks.net/package.json'
-  - path: "FizzySteamworks.unitypackage"
-    label: "FizzySteamworks Unity Package"
-    name: "FizzySteamworks-${nextRelease.version}.unitypackage"
+  - - path: "@semantic-release/github"
+    - assets:
+        - path: "FizzySteamworks.unitypackage"
+          label: "FizzySteamworks Unity Package"
+          name: "FizzySteamworks-${nextRelease.version}.unitypackage"
