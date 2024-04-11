@@ -1,23 +1,9 @@
 name: Semantic Release
 
 on:
-  workflow_dispatch:
-  pull_request:
-    branches:
-    - master
-    paths-ignore:
-      - '.github/**'
-      - '.gitattributes'
-      - '.gitignore'
-      - '**.md'
   push:
     branches:
-    - master
-    paths-ignore:
-      - '.github/**'
-      - '.gitattributes'
-      - '.gitignore'
-      - '**.md'
+    - ci
 
 jobs:
   SemanticRelease:
